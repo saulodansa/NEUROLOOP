@@ -6,8 +6,8 @@ const lancamentos = ref([])
 
 async function carregar() {
   const [rp, rl] = await Promise.all([
-    fetch('http://127.0.0.1:8000/propostas/'),
-    fetch('http://127.0.0.1:8000/financeiro/')
+    fetch('https://neuroloop-production-841a.up.railway.app/propostas/'),
+    fetch('https://neuroloop-production-841a.up.railway.app/financeiro/')
   ])
   propostas.value = await rp.json()
   lancamentos.value = await rl.json()
@@ -33,7 +33,7 @@ const totalRecebido = computed(() =>
 )
 
 async function registrarRecebimento(proposta) {
-  await fetch('http://127.0.0.1:8000/financeiro/', {
+  await fetch('https://neuroloop-production-841a.up.railway.app/financeiro/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

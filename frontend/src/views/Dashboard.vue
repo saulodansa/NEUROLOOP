@@ -10,9 +10,9 @@ const dados = ref({
 
 async function carregar() {
   const [rf, rp, re] = await Promise.all([
-    fetch('http://127.0.0.1:8000/financeiro/resumo'),
-    fetch('http://127.0.0.1:8000/propostas/'),
-    fetch('http://127.0.0.1:8000/eventos/')
+    fetch('https://neuroloop-production-841a.up.railway.app/financeiro/resumo'),
+    fetch('https://neuroloop-production-841a.up.railway.app/propostas/'),
+    fetch('https://neuroloop-production-841a.up.railway.app/eventos/')
   ])
   const financeiro = await rf.json()
   const propostas = await rp.json()

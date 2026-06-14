@@ -23,8 +23,8 @@ const statusLabels = {
 
 async function carregar() {
   const [rc, rcl] = await Promise.all([
-    fetch('http://127.0.0.1:8000/contratos/'),
-    fetch('http://127.0.0.1:8000/clientes/')
+    fetch('https://neuroloop-production-841a.up.railway.app/contratos/'),
+    fetch('https://neuroloop-production-841a.up.railway.app/clientes/')
   ])
   contratos.value = await rc.json()
   clientes.value = await rcl.json()
@@ -40,7 +40,7 @@ async function salvar() {
     data_inicio: form.value.data_inicio ? new Date(form.value.data_inicio).toISOString() : null,
     data_fim: form.value.data_fim ? new Date(form.value.data_fim).toISOString() : null,
   }
-  await fetch('http://127.0.0.1:8000/contratos/', {
+  await fetch('https://neuroloop-production-841a.up.railway.app/contratos/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
@@ -51,12 +51,12 @@ async function salvar() {
 }
 
 async function atualizarStatus(id, status) {
-  await fetch(`http://127.0.0.1:8000/contratos/${id}/status?status=${status}`, { method: 'PUT' })
+  await fetch(`https://neuroloop-production-841a.up.railway.app/contratos/${id}/status?status=${status}`, { method: 'PUT' })
   carregar()
 }
 
 async function deletar(id) {
-  await fetch(`http://127.0.0.1:8000/contratos/${id}`, { method: 'DELETE' })
+  await fetch(`https://neuroloop-production-841a.up.railway.app/contratos/${id}`, { method: 'DELETE' })
   carregar()
 }
 

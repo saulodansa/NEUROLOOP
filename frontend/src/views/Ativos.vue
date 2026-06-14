@@ -20,12 +20,12 @@ const statusLabels = {
 }
 
 async function carregar() {
-  const res = await fetch('http://127.0.0.1:8000/ativos/')
+  const res = await fetch('https://neuroloop-production-841a.up.railway.app/ativos/')
   ativos.value = await res.json()
 }
 
 async function salvar() {
-  await fetch('http://127.0.0.1:8000/ativos/', {
+  await fetch('https://neuroloop-production-841a.up.railway.app/ativos/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(form.value)
@@ -36,12 +36,12 @@ async function salvar() {
 }
 
 async function atualizarStatus(id, status) {
-  await fetch(`http://127.0.0.1:8000/ativos/${id}/status?status=${status}`, { method: 'PUT' })
+  await fetch(`https://neuroloop-production-841a.up.railway.app/ativos/${id}/status?status=${status}`, { method: 'PUT' })
   carregar()
 }
 
 async function deletar(id) {
-  await fetch(`http://127.0.0.1:8000/ativos/${id}`, { method: 'DELETE' })
+  await fetch(`https://neuroloop-production-841a.up.railway.app/ativos/${id}`, { method: 'DELETE' })
   carregar()
 }
 

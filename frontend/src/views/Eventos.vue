@@ -12,8 +12,8 @@ const form = ref({
 
 async function carregar() {
   const [re, rc] = await Promise.all([
-    fetch('http://127.0.0.1:8000/eventos/'),
-    fetch('http://127.0.0.1:8000/clientes/')
+    fetch('https://neuroloop-production-841a.up.railway.app/eventos/'),
+    fetch('https://neuroloop-production-841a.up.railway.app/clientes/')
   ])
   eventos.value = await re.json()
   clientes.value = await rc.json()
@@ -26,7 +26,7 @@ async function salvar() {
     cliente_id: form.value.cliente_id || null,
     data: form.value.data ? new Date(form.value.data).toISOString() : null
   }
-  await fetch('http://127.0.0.1:8000/eventos/', {
+  await fetch('https://neuroloop-production-841a.up.railway.app/eventos/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
@@ -37,7 +37,7 @@ async function salvar() {
 }
 
 async function deletar(id) {
-  await fetch(`http://127.0.0.1:8000/eventos/${id}`, { method: 'DELETE' })
+  await fetch(`https://neuroloop-production-841a.up.railway.app/eventos/${id}`, { method: 'DELETE' })
   carregar()
 }
 
@@ -58,7 +58,7 @@ async function salvarEdicao(id) {
     cliente_id: formEdicao.value.cliente_id || null,
     data: formEdicao.value.data ? new Date(formEdicao.value.data).toISOString() : null
   }
-  await fetch(`http://127.0.0.1:8000/eventos/${id}`, {
+  await fetch(`https://neuroloop-production-841a.up.railway.app/eventos/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)

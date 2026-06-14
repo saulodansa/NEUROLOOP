@@ -10,12 +10,12 @@ const form = ref({
 })
 
 async function carregarClientes() {
-  const res = await fetch('http://127.0.0.1:8000/clientes/')
+  const res = await fetch('https://neuroloop-production-841a.up.railway.app/clientes/')
   clientes.value = await res.json()
 }
 
 async function salvarCliente() {
-  await fetch('http://127.0.0.1:8000/clientes/', {
+  await fetch('https://neuroloop-production-841a.up.railway.app/clientes/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(form.value)
@@ -26,7 +26,7 @@ async function salvarCliente() {
 }
 
 async function deletarCliente(id) {
-  await fetch(`http://127.0.0.1:8000/clientes/${id}`, { method: 'DELETE' })
+  await fetch(`https://neuroloop-production-841a.up.railway.app/clientes/${id}`, { method: 'DELETE' })
   carregarClientes()
 }
 
@@ -41,7 +41,7 @@ function cancelarEdicao() {
 }
 
 async function salvarEdicao(id) {
-  await fetch(`http://127.0.0.1:8000/clientes/${id}`, {
+  await fetch(`https://neuroloop-production-841a.up.railway.app/clientes/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formEdicao.value)

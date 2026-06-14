@@ -8,12 +8,12 @@ const form = ref({
 })
 
 async function carregar() {
-  const res = await fetch('http://127.0.0.1:8000/ativacoes/')
+  const res = await fetch('https://neuroloop-production-841a.up.railway.app/ativacoes/')
   ativacoes.value = await res.json()
 }
 
 async function salvar() {
-  await fetch('http://127.0.0.1:8000/ativacoes/', {
+  await fetch('https://neuroloop-production-841a.up.railway.app/ativacoes/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(form.value)
@@ -24,7 +24,7 @@ async function salvar() {
 }
 
 async function deletar(id) {
-  await fetch(`http://127.0.0.1:8000/ativacoes/${id}`, { method: 'DELETE' })
+  await fetch(`https://neuroloop-production-841a.up.railway.app/ativacoes/${id}`, { method: 'DELETE' })
   carregar()
 }
 

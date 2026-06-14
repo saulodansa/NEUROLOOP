@@ -10,8 +10,8 @@ const form = ref({
 
 async function carregar() {
   const [rl, rr] = await Promise.all([
-    fetch('http://127.0.0.1:8000/financeiro/'),
-    fetch('http://127.0.0.1:8000/financeiro/resumo')
+    fetch('https://neuroloop-production-841a.up.railway.app/financeiro/'),
+    fetch('https://neuroloop-production-841a.up.railway.app/financeiro/resumo')
   ])
   lancamentos.value = await rl.json()
   resumo.value = await rr.json()
@@ -25,7 +25,7 @@ async function salvar() {
     proposta_id: form.value.proposta_id || null,
     data: form.value.data ? new Date(form.value.data).toISOString() : null
   }
-  await fetch('http://127.0.0.1:8000/financeiro/', {
+  await fetch('https://neuroloop-production-841a.up.railway.app/financeiro/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
@@ -36,7 +36,7 @@ async function salvar() {
 }
 
 async function deletar(id) {
-  await fetch(`http://127.0.0.1:8000/financeiro/${id}`, { method: 'DELETE' })
+  await fetch(`https://neuroloop-production-841a.up.railway.app/financeiro/${id}`, { method: 'DELETE' })
   carregar()
 }
 

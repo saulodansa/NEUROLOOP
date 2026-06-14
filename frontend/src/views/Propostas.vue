@@ -26,15 +26,15 @@ const statusColors = {
 
 async function carregar() {
   const [rp, rc] = await Promise.all([
-    fetch('http://127.0.0.1:8000/propostas/'),
-    fetch('http://127.0.0.1:8000/clientes/')
+    fetch('https://neuroloop-production-841a.up.railway.app/propostas/'),
+    fetch('https://neuroloop-production-841a.up.railway.app/clientes/')
   ])
   propostas.value = await rp.json()
   clientes.value = await rc.json()
 }
 
 async function salvar() {
-  await fetch('http://127.0.0.1:8000/propostas/', {
+  await fetch('https://neuroloop-production-841a.up.railway.app/propostas/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(form.value)
@@ -45,12 +45,12 @@ async function salvar() {
 }
 
 async function atualizarStatus(id, status) {
-  await fetch(`http://127.0.0.1:8000/propostas/${id}/status?status=${status}`, { method: 'PUT' })
+  await fetch(`https://neuroloop-production-841a.up.railway.app/propostas/${id}/status?status=${status}`, { method: 'PUT' })
   carregar()
 }
 
 async function deletar(id) {
-  await fetch(`http://127.0.0.1:8000/propostas/${id}`, { method: 'DELETE' })
+  await fetch(`https://neuroloop-production-841a.up.railway.app/propostas/${id}`, { method: 'DELETE' })
   carregar()
 }
 
@@ -65,7 +65,7 @@ function cancelarEdicao() {
 }
 
 async function salvarEdicao(id) {
-  await fetch(`http://127.0.0.1:8000/propostas/${id}`, {
+  await fetch(`https://neuroloop-production-841a.up.railway.app/propostas/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
