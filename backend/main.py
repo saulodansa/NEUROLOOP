@@ -17,7 +17,7 @@ app = FastAPI(title="Neuroloop OS", version="0.1")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "https://rare-communication-production.up.railway.app"],
+    allow_origins=["http://localhost:5173", "https://rare-communication-production.up.railway.app", "https://neuroloop.up.railway.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
